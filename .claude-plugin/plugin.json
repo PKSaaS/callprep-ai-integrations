@@ -5,5 +5,8 @@
   "author": {
     "name": "CallPrep",
     "url": "https://callprep.app"
-  }
+  },
+  "homepage": "https://callprep.app",
+  "repository": "https://github.com/PKSaaS/callprep-ai-integrations",
+  "license": "MIT"
 }

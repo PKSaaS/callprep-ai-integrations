@@ -10,5 +10,8 @@
       "source": "./",
       "description": "Sales Follow-Up by CallPrep \u2014 lead research + ready-to-send follow-up sequences."
     }
-  ]
+  ],
+  "metadata": {
+    "description": "Sales Follow-Up by CallPrep \u2014 research any B2B lead from their email and get ready-to-send follow-up sequences (3 emails + LinkedIn invite + LinkedIn follow-up) or a sales call prep brief."
+  }
 }
