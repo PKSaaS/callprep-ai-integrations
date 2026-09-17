@@ -1,6 +1,6 @@
 # CallPrep AI Assistant Integrations
 
-Bring [CallPrep](https://callprep.app) — B2B sales call research — into Claude and ChatGPT.
+Bring [CallPrep](https://callprep.app) into Claude and ChatGPT: research any B2B prospect from their email, and turn inbound leads into ready-to-send outreach sequences (3 emails + LinkedIn invite + LinkedIn follow-up). Free to use with a free CallPrep account (monthly credit limits apply).
 
 Submit a prospect's email address and get an AI-enriched call prep brief: LinkedIn activity, company insights, synergy points, tailored discovery questions, and key decision makers.
 
