@@ -8,7 +8,7 @@ Submit a prospect's email address and get an AI-enriched call prep brief: Linked
 
 | Path | What it is |
 | --- | --- |
-| `skills/callprep/` | **Claude skill** — installable in Claude Desktop / claude.ai (upload) and Claude Code (plugin) |
+| `skills/sales-follow-up/` | **Claude skill** — installable in Claude Desktop / claude.ai (upload) and Claude Code (plugin) |
 | `.claude-plugin/` | Makes this repo a **Claude Code plugin marketplace** — one-command install |
 | `chatgpt/` | **ChatGPT GPT** — OpenAPI spec + instructions to publish a CallPrep GPT in the GPT Store |
 | `DISTRIBUTION.md` | How to get each one into the official directories, with caveats |
@@ -19,7 +19,7 @@ Submit a prospect's email address and get an AI-enriched call prep brief: Linked
 
 ```
 /plugin marketplace add PKSaaS/callprep-ai-integrations
-/plugin install callprep@callprep
+/plugin install sales-follow-up@callprep
 ```
 
 Then set your API key (from the [CallPrep dashboard](https://callprep.app) → API Keys):
@@ -32,7 +32,7 @@ Ask Claude: *"Prep me for my call with john.doe@acme.com"*
 
 ### Claude Desktop / claude.ai
 
-Settings → Capabilities → Skills → Upload skill → select a zip of `skills/callprep/`.
+Settings → Capabilities → Skills → Upload skill → select a zip of `skills/sales-follow-up/`.
 
 ### ChatGPT
 

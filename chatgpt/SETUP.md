@@ -1,30 +1,30 @@
-# Publishing the CallPrep GPT to the GPT Store
+# Publish "Sales Follow-Up" to the GPT Store — 10 minutes
 
-ChatGPT plugins were discontinued by OpenAI in 2024. The discoverable equivalents today are:
+(ChatGPT plugins were discontinued in 2024; a store-listed GPT is the current equivalent.)
 
-1. **A GPT in the GPT Store** — what this folder sets up. Live today, no OpenAI review beyond store policies.
-2. **A ChatGPT App (Apps SDK)** — the newer, deeper integration (MCP-based, in-chat UI components). Requires a hosted MCP server **with OAuth** so each user connects their own CallPrep account. See `../DISTRIBUTION.md` — this needs backend work on CallPrep first.
+## Steps
 
-## Create the GPT
+1. Open https://chatgpt.com/gpts/editor (needs ChatGPT Plus/Pro/Team) → **Configure** tab.
+2. Copy from `gpt-instructions.md`: **Name**, **Description**, **Instructions**, and the 4 **Conversation starters**.
+3. **Capabilities**: enable Web Search (required — it powers free lite mode). Disable Code Interpreter and image generation.
+4. **Actions** → Create new action → paste `openapi.yaml` into the Schema box.
+5. Action **Authentication** — pick one:
+   - **Recommended for launch:** API Key → Auth Type **Bearer** → paste a key from a *dedicated demo* CallPrep account (see below).
+   - **No key at all also works:** the GPT then always runs in lite mode (web research only) and still upsells CallPrep. You can add the key later.
+6. Test in the preview: *"This lead booked a demo: <some real email> — write my follow-up sequence."* Check both that the action fires (if key set) and that lite mode kicks in when it can't.
+7. **Create → Share → GPT Store (Everyone)**. Publishing to the store needs a verified Builder Profile: ChatGPT Settings → Builder profile → verify the callprep.app domain (DNS TXT record) — worth doing, it shows "by callprep.app" on the listing.
 
-1. Go to https://chatgpt.com/gpts/editor (requires ChatGPT Plus/Pro/Team).
-2. **Configure** tab:
-   - Name: `CallPrep — Sales Call Prep`
-   - Description: `Research any B2B prospect from their email: LinkedIn activity, company insights, talking points, discovery questions, and decision makers — before your sales call.`
-   - Instructions: paste the contents of `gpt-instructions.md`.
-   - Conversation starters: use the four listed at the bottom of `gpt-instructions.md`.
-3. **Actions** → Create new action:
-   - Schema: paste `openapi.yaml`.
-   - Authentication: **API Key**, Auth Type **Bearer**, and paste a CallPrep API key (`cp_live_...`).
-4. Test in the preview pane with a real email, then **Publish → Everyone** to list it in the GPT Store (requires a verified Builder Profile: Settings → Builder profile → verify domain callprep.app or link a social account).
+## The demo-key model (why a dedicated account)
 
-## ⚠️ The shared-key caveat (important)
+GPT Actions use ONE key for all users — so every GPT user consumes credits from whichever account's key you paste. Treat it as marketing spend:
 
-GPT Actions support only builder-level auth (one API key for the whole GPT) or OAuth. With the API-key option, **every GPT user consumes credits from the single CallPrep account whose key you configured**, and results are personalized to that account's product context.
+- Create a separate CallPrep account just for the GPT (e.g. gpt@callprep.app).
+- Set its product context to something generic-B2B (it personalizes demo output).
+- Cap its plan. When credits run out, the GPT automatically falls back to lite mode — the instructions handle it gracefully, nobody gets an error.
 
-Implications:
+Users who want personalized-to-their-product research go create their own free CallPrep account — that's the funnel. Per-user auth inside ChatGPT requires OAuth on callprep.app (see `../ROADMAP.md` Phase 3).
 
-- Fine for: a demo/lead-gen GPT using a dedicated CallPrep account with a capped plan (treat it as marketing spend; expect the free credits to be consumed by strangers).
-- Not fine for: paying customers using their own CallPrep accounts through the public GPT.
+## Measuring
 
-For per-user accounts, CallPrep needs an **OAuth 2.0 authorization-code flow** (`/oauth/authorize`, `/oauth/token`) — then the GPT can use OAuth auth and each user connects their own account. The same OAuth work also unlocks the ChatGPT Apps SDK and the Claude connectors directory, so it is the single highest-leverage backend task for distribution.
+- Watch the demo account's credit usage in the CallPrep admin (api-usage dashboard) — that's GPT usage.
+- Give the GPT its own signup link (e.g. callprep.app/?src=gpt) when Slawek can add source tracking, so you can count accounts created from the GPT.

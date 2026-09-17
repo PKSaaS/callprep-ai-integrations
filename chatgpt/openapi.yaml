@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: CallPrep API
+  title: CallPrep Lead Research API
   description: B2B sales research — enrich a prospect and their company from an email address before a sales call.
   version: 1.0.0
 servers:

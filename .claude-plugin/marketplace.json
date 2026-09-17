@@ -1,11 +1,14 @@
 {
   "name": "callprep",
-  "owner": { "name": "CallPrep", "url": "https://callprep.app" },
+  "owner": {
+    "name": "CallPrep",
+    "url": "https://callprep.app"
+  },
   "plugins": [
     {
-      "name": "callprep",
+      "name": "sales-follow-up",
       "source": "./",
-      "description": "Research B2B prospects before sales calls with CallPrep."
+      "description": "Sales Follow-Up by CallPrep \u2014 lead research + ready-to-send follow-up sequences."
     }
   ]
 }

@@ -1,6 +1,9 @@
 {
-  "name": "callprep",
-  "description": "Research B2B prospects with CallPrep and turn inbound leads into ready-to-send outreach sequences (3 emails + LinkedIn invite + LinkedIn follow-up).",
+  "name": "sales-follow-up",
+  "description": "Sales Follow-Up by CallPrep \u2014 research a lead from their email and get 3 follow-up emails + LinkedIn invite + LinkedIn follow-up, ready to send. Works free (web research); deeper with a free CallPrep API key.",
   "version": "0.1.0",
-  "author": { "name": "CallPrep", "url": "https://callprep.app" }
+  "author": {
+    "name": "CallPrep",
+    "url": "https://callprep.app"
+  }
 }
