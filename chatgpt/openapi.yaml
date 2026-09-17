@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: CallPrep API
+  description: B2B sales research — enrich a prospect and their company from an email address before a sales call.
+  version: 1.0.0
+servers:
+  - url: https://rpiqzfzokrwxavztrpmp.supabase.co/functions/v1
+paths:
+  /research:
+    post:
+      operationId: submitResearch
+      summary: Submit a prospect research job. Consumes 1 credit. Asynchronous — poll getResearchStatus for the result.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                  description: The prospect's work email address (required).
+                prospect_name:
+                  type: string
+                  description: Prospect's full name (optional, improves match accuracy).
+                company_name:
+                  type: string
+                  description: Company name (optional).
+                linkedin_url:
+                  type: string
+                  description: Prospect's LinkedIn profile URL (optional).
+                company_linkedin_url:
+                  type: string
+                  description: Company LinkedIn URL (optional).
+      responses:
+        "202":
+          description: Job accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  research_id: { type: string }
+                  status: { type: string }
+                  estimated_seconds: { type: integer }
+  /research-status/{research_id}:
+    get:
+      operationId: getResearchStatus
+      summary: Poll for research results. Does not consume credits. Poll every ~5 seconds until status is "completed".
+      parameters:
+        - name: research_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Current job status; when completed, includes the full research data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  research_id: { type: string }
+                  status:
+                    type: string
+                    description: processing | completed | failed
+                  completed_at: { type: string }
+                  data:
+                    type: object
+                    properties:
+                      prospect:
+                        type: object
+                        description: name, title, company, summary, opening_talk (conversation starters), recent LinkedIn posts.
+                      company:
+                        type: object
+                        description: description, industry, hq, revenue, employees, technologies, problems, services, icp, synergy_points, discovery_questions, news, insights, posts.
+                      decision_makers:
+                        type: array
+                        description: Key decision makers (plan-gated; may be absent).
+                        items:
+                          type: object

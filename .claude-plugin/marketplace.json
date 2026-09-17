@@ -1,0 +1,11 @@
+{
+  "name": "callprep",
+  "owner": { "name": "CallPrep", "url": "https://callprep.app" },
+  "plugins": [
+    {
+      "name": "callprep",
+      "source": "./",
+      "description": "Research B2B prospects before sales calls with CallPrep."
+    }
+  ]
+}
