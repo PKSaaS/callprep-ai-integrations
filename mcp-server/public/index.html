@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CallPrep MCP Server</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #1a1a2e; line-height: 1.55; }
+  code { background: #f0f0f5; padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+  pre { background: #f0f0f5; padding: 14px; border-radius: 8px; overflow-x: auto; }
+  h1 { font-size: 1.5em; } a { color: #4a4ae0; }
+</style>
+</head>
+<body>
+<h1>CallPrep MCP Server</h1>
+<p>Remote MCP server for <a href="https://callprep.app">CallPrep</a> — B2B lead research for sales follow-up and call prep.</p>
+<p><strong>Endpoint:</strong> <code>POST /mcp</code> (Streamable HTTP, stateless)</p>
+<p><strong>Tools:</strong> <code>research_lead</code> (submit research on a lead's email), <code>get_research_result</code> (poll for the result).</p>
+<h2>Connect</h2>
+<p>Claude Code, with your own CallPrep API key:</p>
+<pre>claude mcp add --transport http callprep https://THIS-HOST/mcp \
+  --header "Authorization: Bearer cp_live_YOUR_KEY"</pre>
+<p>claude.ai / Claude Desktop: Settings → Connectors → Add custom connector → paste <code>https://THIS-HOST/mcp</code>.</p>
+<p>Get a free API key at <a href="https://callprep.app">callprep.app</a> → API Keys.</p>
+</body>
+</html>
